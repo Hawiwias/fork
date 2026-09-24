@@ -14,8 +14,8 @@ MPU má mnohem větší výpočetní výkon, MCU - MHz, MPU - GHz
 
 # Embedded
 **Vestavěný systém**
-Je většinou specializovaný pro jeden účel na rozdíl od počítače, massprodukce,
-rychlost a jednoduché použití, bankomat, kalkulačky, herní konzole
+Jednoúčelový počítač, který je zabudován do zařízení, které ovládá. Jsou navrženy pro konkrétní účely
+massprodukce, rychlost a jednoduché použití, bankomaty, kalkulačky, herní konzole, elektrospotřebiče
 
 ## PLC
 **Programmable Logic Controller**
@@ -23,9 +23,8 @@ Foxtrot, malý průmyslový počítač sloužící k automatizaci, pracuje v cyk
 neslouží k osobní potřebě, v továrně na výrobu, kompaktní - pevná konfigurace a modulární - volná konfigurace, vysoká odolnost, SIMATIC S7-1200
 
 # IPC
-**Instructions per Cycle**
-měřítko efektivity procesoru, průměrné číslo instrukcí spuštěných v cyklu,
-IPC = celkový počet instrukcí / celkový počet cyklů
+**Industrial PC**
+Industriální počítač používaný ve firmách, většinou server, mají vyšší standardy spolehlivosti a přesnosti, nejčastěji řízeny Linuxem
 
 # NC
 **Numerical Control**
