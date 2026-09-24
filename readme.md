@@ -157,7 +157,7 @@ Vyplňte rozhodovací matici. Jako vzor poslouží vyplněný sloupec pro **Vzor
 | Kritérium hodnocení                                                                                   | **Vzorová aplikace 0 (Vjezdová závora - VZOR)**                                                                                                                                                                           | Aplikace A (Pokojový termostat) | Aplikace B (Balicí linka) | Aplikace C (Kamerová kontrola svarů) |
 | :---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------ | :------------------------ | :----------------------------------- |
 | **Doporučená platforma** *(MCU / PLC / iPC)*                                                          | **Programovatelné relé / kompaktní PLC** *(např. Siemens LOGO!, Eaton easyE4)*                                                                                                                                            | `MCU`                           | `PLC`                     | `iPC`                                |
-| **Pořizovací cena HW na 1 kus** *(nízká < 500 Kč / střední 5–30 tis. Kč / vysoká > 50 tis. Kč)*       | **Střední** *(cca 3 500 – 6 000 Kč)*                                                                                                                                                                                      | `Nízká`                           | `Dtřední`                     | `Bysoká`                                |
+| **Pořizovací cena HW na 1 kus** *(nízká < 500 Kč / střední 5–30 tis. Kč / vysoká > 50 tis. Kč)*       | **Střední** *(cca 3 500 – 6 000 Kč)*                                                                                                                                                                                      | `Nízká`                           | `Střední`                     | `Vysoká`                                |
 | **Primární programovací jazyk** *(C/C++/MicroPython vs. IEC 61131-3 ST/LAD vs. Python/C#/C++ pod OS)* | **FBD / LAD** *(grafické funkční bloky nebo liniové schéma dle IEC 61131-3)*                                                                                                                                              | `C/C++/MicroPython`                           | `IEC 61131-3 ST/LAD`                     | `Python/C#/C++ pod OS`                                |
 | **Klíčový technický argument pro volbu** *(např. spotřeba, determinismus, grafický výkon)*            | Montáž přímo na DIN lištu v rozváděči, integrovaný displej pro nastavení časovačů přímo na místě, robustní reléové výstupy pro motor a semafor, napájení 24 V DC / 230 V AC bez nutnosti vývoje vlastního plošného spoje. | `Nízká spotřeba`                           | `Determinismus/předvídatelnost`                     | `Vysoký grafický/výpočetní výkon`                                |
 | **Hlavní riziko při volbě špatné platformy** *(proč by neuspěly ostatní dvě varianty)*                | **MCU:** Nutnost vývoje vlastní desky, nízká odolnost vůči venkovnímu rušení a obtížný servis údržbou.<br>**iPC:** Zbytečně extrémní cena (> 30 tis. Kč), dlouhý start po výpadku napájení a vysoká spotřeba.             | `PLC/IPC by byly zbytečně drahé, rozměrné a energeticky náročné`                           | `	MCU může komplikovat  řízení, diagnostiku a servis. iPC může být zbytečně složitý a drahý.`                     | `MCU/PLC nemusí mít dostatečný výkon. Nedostatek rychlosti operací`                                |
@@ -211,11 +211,11 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 
 | Typ signálu | Požadavek aplikace (kusy) | Popis signálů v aplikaci | Počet po započtení rezervy (+20 %) |
 | :--- | :--- | :--- | :--- |
-| **Digitální vstup (DI)** | `...` | `...` | `...` |
-| **Digitální výstup (DO) – reléový** | `...` | `...` | `...` |
-| **Digitální výstup (DO) – tranzistorový** | `...` | `...` | `...` |
-| **Analogový vstup (AI)** | `...` | `...` | `...` |
-| **Analogový výstup (AO)** | `...` | `...` | `...` |
+| **Digitální vstup (DI)** | `3× plovákový hladinový spínač, 1× termistorové ochranné relé` | `4x DI` | `5x` |
+| **Digitální výstup (DO) – reléový** | `2× stykač pro spouštění` | `2x DO` | `3x` |
+| **Digitální výstup (DO) – tranzistorový** | `1× opticko-akustický výstražný maják` | `1x DO` | `2x` |
+| **Analogový vstup (AI)** | `1× hydrostatická ponorná sonda` | `1x AI` | `2x` |
+| **Analogový výstup (AO)** | `1× řízení otáček frekvenčního měniče` | `1X AO` | `2x` |
 
 2. **Výběr konkrétního hardwaru z katalogu výrobce:**
    - Navrhněte konkrétní přístroj z praxe (např. *Siemens LOGO! 24RCE + rozšiřující moduly*, *Siemens S7-1200 CPU 1212C/1214C DC/DC/RLY*, *Schneider Modicon M221*, *Eaton easyE4-UC-12RC1*, *WAGO 750*, případně průmyslový IoT kontrolér typu *UniPi Neuron*).
