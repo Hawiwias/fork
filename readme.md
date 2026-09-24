@@ -80,42 +80,42 @@ Proč se u kritických aplikací v letectví (např. systém řízení letu Fly-
 1. **Typy pamětí v řídicích jednotkách:**
    - Doplňte porovnání pamětí z hlediska stálosti dat a rychlosti:
      - **RAM:** 
-	     - Je volatilní (energeticky závislá)? `[Ano / Ne]`
-	     - Rychlost zápisu: `...` 
-	     - K čemu se využívá v PLC/MCU: `...`
+	     - Je volatilní (energeticky závislá)? `Ano`
+	     - Rychlost zápisu: `mikrosekundy až nanosekundy` 
+	     - K čemu se využívá v PLC/MCU: `jako paměť pro rychlé zápisy a zpracování dat`
      - **Flash (ROM):** 
-	     - Je volatilní? `[Ano / Ne]`
-	     - K čemu se využívá v PLC/MCU: `...`
+	     - Je volatilní? `Ne`
+	     - K čemu se využívá v PLC/MCU: `trvalé úložiště pro konfiguraci a zálohu`
      - **EEPROM / NVRAM:** 
-	     - Je volatilní? `[Ano / Ne]`
-	     - K čemu se využívá v PLC/MCU: `...`
+	     - Je volatilní? `Ne`
+	     - K čemu se využívá v PLC/MCU: `uložení dat po vypnutí napájení`
    - *Otázka z praxe:* Kam se v průmyslovém PLC ukládají aktuální provozní proměnné (např. čítače vyrobených kusů nebo motohodiny), aby se při nečekaném výpadku napájení neztratily (tzv. remanentní / retain data)?
-     - Odpověď: `...`
+     - Odpověď: `NVRAM (Non-Volatile RAM) `
 
 2. **Reálný čas a determinismus (Hard vs. Soft Real-Time):**
    - Proč pro reakci na nouzové zastavení lisu (požadavek reakce do 5 ms) použijeme PLC či mikrokontrolér s RTOS, a nikoliv běžné Raspberry Pi s operačním systémem Raspberry Pi OS (standardní Linux)?
-     - Odpověď: `...`
+     - Odpověď: `Raspberry Pi má nepředvídatelnou časovou odezvu (1 až 100 ms), příklad: PLC se zvládne vypnout do 5ms, ale Raspberry Pi se vypne po 5-100ms`
 
 3. **Odolnost vůči vlivům prostředí a dešifrování kódu IP:**
    - Dešifrujte kód **IP68**:
-     - První číslice (6): `...`
-     - Druhá číslice (8): `...`
+     - První číslice (6): `Ochrana proti prachu`
+     - Druhá číslice (8): `Odolnost proti dlouhému ponoření do vody`
    - Jaké minimální krytí IP musí mít rozváděč umístěný ve venkovním nekrytém prostředí, kde na něj přímo dopadá déšť a fouká polétavý prach?
-     - Označte správnou volbu: `[ ] IP20` | `[ ] IP44` | `[ ] IP65` | `[ ] IP00`
-     - Zdůvodnění: `...`
+     - Označte správnou volbu: `[ ] IP20` | `[] IP44` | `[+] IP65` | `[ ] IP00`
+     - Zdůvodnění: `6 - do rozvaděče neproniknou žádné částice, 5 - ochrana proti tryskající vodě ze všech směrů`
 
 4. **Konstrukční rozdíly kancelářského PC vs. průmyslového iPC:**
    - Vyberte a doplňte hlavní odlišnosti:
      - *Chlazení:* 
-	     - Kancelářské PC: `...` 
-	     - vs. iPC: `...`
+	     - Kancelářské PC: `chladící ventilátory` 
+	     - vs. iPC: `pasivní chlazení (hliník) nebo ventilátory`
      - *Napájecí napětí a filtrace:* 
-	     - Kancelářské PC: `...` 
-	     - vs. iPC: `...`
-     - *Odolnost proti otřesům a vibracím:* `...`
+	     - Kancelářské PC: `standardní zdroj` 
+	     - vs. iPC: `ochrana proti nečekanému výkyvu napětí, širší rozsah napájecího napětí`
+     - *Odolnost proti otřesům a vibracím:* `uzpůsobená pro vyšší odolnost proti vibracím, otřesům, prachu a dalším náročným podmínkám.`
      - *Způsob montáže:* 
 	     - Kancelářské PC: na stůl/pod stůl 
-	     - vs. iPC: `...`
+	     - vs. iPC: `do racku, na lištu nebo do rozvaděče`
 
 > :key: **Vysvětlení pojmů a odborné zdroje:**
 > - **Determinismus (Real-Time):** Vlastnost systému, která zaručuje, že odezva na vstupní událost proběhne vždy v přesně definovaném a předvídatelném čase (deadline). V *Hard Real-Time* systémech znamená nedodržení časového limitu fatální havárii celého procesu. 
@@ -156,11 +156,11 @@ Vyplňte rozhodovací matici. Jako vzor poslouží vyplněný sloupec pro **Vzor
 
 | Kritérium hodnocení                                                                                   | **Vzorová aplikace 0 (Vjezdová závora - VZOR)**                                                                                                                                                                           | Aplikace A (Pokojový termostat) | Aplikace B (Balicí linka) | Aplikace C (Kamerová kontrola svarů) |
 | :---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------ | :------------------------ | :----------------------------------- |
-| **Doporučená platforma** *(MCU / PLC / iPC)*                                                          | **Programovatelné relé / kompaktní PLC** *(např. Siemens LOGO!, Eaton easyE4)*                                                                                                                                            | `...`                           | `...`                     | `...`                                |
-| **Pořizovací cena HW na 1 kus** *(nízká < 500 Kč / střední 5–30 tis. Kč / vysoká > 50 tis. Kč)*       | **Střední** *(cca 3 500 – 6 000 Kč)*                                                                                                                                                                                      | `...`                           | `...`                     | `...`                                |
-| **Primární programovací jazyk** *(C/C++/MicroPython vs. IEC 61131-3 ST/LAD vs. Python/C#/C++ pod OS)* | **FBD / LAD** *(grafické funkční bloky nebo liniové schéma dle IEC 61131-3)*                                                                                                                                              | `...`                           | `...`                     | `...`                                |
-| **Klíčový technický argument pro volbu** *(např. spotřeba, determinismus, grafický výkon)*            | Montáž přímo na DIN lištu v rozváděči, integrovaný displej pro nastavení časovačů přímo na místě, robustní reléové výstupy pro motor a semafor, napájení 24 V DC / 230 V AC bez nutnosti vývoje vlastního plošného spoje. | `...`                           | `...`                     | `...`                                |
-| **Hlavní riziko při volbě špatné platformy** *(proč by neuspěly ostatní dvě varianty)*                | **MCU:** Nutnost vývoje vlastní desky, nízká odolnost vůči venkovnímu rušení a obtížný servis údržbou.<br>**iPC:** Zbytečně extrémní cena (> 30 tis. Kč), dlouhý start po výpadku napájení a vysoká spotřeba.             | `...`                           | `...`                     | `...`                                |
+| **Doporučená platforma** *(MCU / PLC / iPC)*                                                          | **Programovatelné relé / kompaktní PLC** *(např. Siemens LOGO!, Eaton easyE4)*                                                                                                                                            | `MCU`                           | `PLC`                     | `iPC`                                |
+| **Pořizovací cena HW na 1 kus** *(nízká < 500 Kč / střední 5–30 tis. Kč / vysoká > 50 tis. Kč)*       | **Střední** *(cca 3 500 – 6 000 Kč)*                                                                                                                                                                                      | `Nízká`                           | `Dtřední`                     | `Bysoká`                                |
+| **Primární programovací jazyk** *(C/C++/MicroPython vs. IEC 61131-3 ST/LAD vs. Python/C#/C++ pod OS)* | **FBD / LAD** *(grafické funkční bloky nebo liniové schéma dle IEC 61131-3)*                                                                                                                                              | `C/C++/MicroPython`                           | `IEC 61131-3 ST/LAD`                     | `Python/C#/C++ pod OS`                                |
+| **Klíčový technický argument pro volbu** *(např. spotřeba, determinismus, grafický výkon)*            | Montáž přímo na DIN lištu v rozváděči, integrovaný displej pro nastavení časovačů přímo na místě, robustní reléové výstupy pro motor a semafor, napájení 24 V DC / 230 V AC bez nutnosti vývoje vlastního plošného spoje. | `Nízká spotřeba`                           | `Determinismus/předvídatelnost`                     | `Vysoký grafický/výpočetní výkon`                                |
+| **Hlavní riziko při volbě špatné platformy** *(proč by neuspěly ostatní dvě varianty)*                | **MCU:** Nutnost vývoje vlastní desky, nízká odolnost vůči venkovnímu rušení a obtížný servis údržbou.<br>**iPC:** Zbytečně extrémní cena (> 30 tis. Kč), dlouhý start po výpadku napájení a vysoká spotřeba.             | `PLC/IPC by byly zbytečně drahé, rozměrné a energeticky náročné`                           | `	MCU může komplikovat  řízení, diagnostiku a servis. iPC může být zbytečně složitý a drahý.`                     | `MCU/PLC nemusí mít dostatečný výkon. Nedostatek rychlosti operací`                                |
 
 > **Kritéria hodnocení úlohy 3 (bodování a známka):**
 > - :star: **Správnost technického přiřazení platforem (30 %):** Stoprocentně logické a obhajitelné přiřazení všech 3 technologií.
