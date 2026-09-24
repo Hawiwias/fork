@@ -220,22 +220,29 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
 2. **Výběr konkrétního hardwaru z katalogu výrobce:**
    - Navrhněte konkrétní přístroj z praxe (např. *Siemens LOGO! 24RCE + rozšiřující moduly*, *Siemens S7-1200 CPU 1212C/1214C DC/DC/RLY*, *Schneider Modicon M221*, *Eaton easyE4-UC-12RC1*, *WAGO 750*, případně průmyslový IoT kontrolér typu *UniPi Neuron*).
    - Uveďte:
-     - Výrobce a přesný model CPU: `...`
-     - Objednací kód (Part Number / Order Code): `...`
-     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `...`
-     - Napájecí napětí zvolené jednotky: `...`
-     - Jak je vyřešeno odesílání dat na dispečink: `...`
-     - Odkaz na technický list (datasheet): `...`
-     - Odkazy na další použité zdroje: `...`
+     - Výrobce a přesný model CPU: `Siemens SIPLUS S7-1200 CPU 1214C DC/DC/Relay`
+     - Objednací kód (Part Number / Order Code): `6AG1214-1HG40-2XB0`
+     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `SIPLUS KTP700 Basic Color PN (displej)`
+     - Napájecí napětí zvolené jednotky: `SIPLUS PM1207`
+     - Jak je vyřešeno odesílání dat na dispečink: `Data budou z PLC přenášena přes integrované ethernetové rozhraní PROFINET do nadřazeného dispečerského systému. (OPC UA, TCP)`
+     - Odkaz na technický list (datasheet): [datasheet](https://mall.industry.siemens.com/mall/Catalog/DatasheetDownload?downloadUrl=teddatasheet%2F%3Fformat%3DPDF%26caller%3DMall%26mlfbs%3D6AG1214-1HG40-2XB0%26language%3Den)
+     - Odkazy na další použité zdroje: [siemens catalog](https://mall.industry.siemens.com/mall/Catalog/Product/?mlfb=6AG1214-1HG40-2XB0)
 
 3. **Technické ověření z datasheetu:**
-   - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `...`
-   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `...`
+   - Zvládá zvolená jednotka garantovaný provoz při -20 °C? Doložte údaj z datasheetu: `Ambient temperature during operation
+● min. -40 °C; = Tmin (incl. condensation/frost); start-up @ -25 °C
+● max. 70 °C; = Tmax; Tmax > +55 °C number of simultaneously switched-on digital
+inputs 7, digital outputs 5, analog inputs 2 (no adjacent points) with horizontal
+mounting position; Tmax > +60 °C number of simultaneously switched-on
+digital inputs 7, digital outputs 5, analog inputs 1 (no adjacent points) with
+horizontal mounting position
+● At cold restart, min. -25 °C`
+   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Mezilehlá relé oddělují řídicí část PLC 24 V DC od výkonové části 230 V AC a současně chrání výstupy PLC před případnými napěťovými špičkami při spínání cívek stykačů. Řešení také usnadňuje servis a případnou výměnu stykače nebo relé.`
 
 4. **Krytí rozváděče:**
    - Jaké minimální krytí **IP skříně** zvolíte? Jak v rozváděči zajistíte provoz v mrazech -20 °C a v letních vedrech?
-     - Zvolené krytí rozváděče: `...`
-     - Teplotní management skříně: `...`
+     - Zvolené krytí rozváděče: `IP65`
+     - Teplotní management skříně: `V zimě topné těleso s termostatem, v létě ventilátor s filtrem. Komponenty musí být vhodné pro teploty −20 až +45 °C.`
 
 > **Kritéria hodnocení úlohy 4 (bodování a známka):**
 > - :star: **Správnost I/O bilance a dimenzování (30 %):** Správný součet všech signálů, korektní rozlišení reléových vs. tranzistorových výstupů a správné započtení rezervy min. 20 %.
