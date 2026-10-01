@@ -286,16 +286,17 @@ Jako vedoucí inženýr jste převzal projekt po nezkušeném brigádníkovi, kt
 
 | Oblast auditu | Zjištěná vada v amatérském návrhu | Fyzikální mechanismus selhání (proč to selže) | Následek pro stroj nebo obsluhu |
 | :--- | :--- | :--- | :--- |
-| **Elektromagnetická kompatibilita (EMC)** | `...` | Napěťové špičky z indukční zátěže hydraulických ventilů způsobí restart MCU... | `...` |
-| **Mechanická a teplotní odolnost** | PLA plast a montáž na těleso lisu | `...` | `...` |
-| **Konektivita a propojení vodičů** | DuPont propojovací kabely bez aretace | `...` | `...` |
-| **Funkční bezpečnost (Safety)** | Nouzový stop řešený softwarově v čipu | `...` | `...` |
+| **Elektromagnetická kompatibilita (EMC)** | `Chybí filtrace napájení a oddělení silových a signálových kabelů.` | Napěťové špičky z indukční zátěže hydraulických ventilů způsobí restart MCU... | `Může dojít k nečekanému pohybu pohonu a ohrožení obsluhy.` |
+| **Mechanická a teplotní odolnost** | PLA plast a montáž na těleso lisu | `PLA plast a montáž na těleso bez ověření teplotní odolnosti a mechanického namáhání.` | `PLA při zvýšené teplotě výrazně měkne a pod dlouhodobým zatížením může docházet k tečení materiálu. Uchycení se může uvolnit` |
+aretace - ochrana proti samovolné změně polohy
+| **Konektivita a propojení vodičů** | DuPont propojovací kabely bez aretace | `Vibrace, tah a opakované ohýbání mohou způsobit povytažení konektoru nebo přerušení kontaktu.` | `Způsobí náhodné výpadky snímačů nebo akčních členů. Řídicí systém může dostat chybný signál a stroj může reagovat nesprávně.` |
+| **Funkční bezpečnost (Safety)** | Nouzový stop řešený softwarově v čipu | `Při zamrznutí MCU, chybě programu nebo ztrátě napájení nemusí software příkaz k zastavení zpracovat.` | `Nouzové zastavení nemusí nastat. Stroj může ohrozit obsluhu nebo ztratit data.` |
 
 2. **Návrh profesionálního nápravného řešení:**
    - Navrhněte, jakými certifikovanými průmyslovými komponenty tento celek nahradíte při zachování minimálního rozpočtu:
-     - *Náhrada řídicí jednotky:* `...` *(např. certifikované průmyslové programovatelné relé s montáží na DIN lištu a krytím)*
-     - *Náhrada napájecího zdroje:* `...` *(např. stabilizovaný průmyslový zdroj 24 V DC na DIN lištu s ochranou proti přepětí)*
-     - *Způsob zapojení bezpečnostního okruhu (Safety):* Jak musí být podle norem zapojeno tlačítko Emergency Stop (E-Stop)? Smí být spoléháno pouze na software mikrokontroléru? Zdůvodněte: `...`
+     - *Náhrada řídicí jednotky:* `Certifikované průmyslové programovatelné relé / bezpečnostní PLC pro montáž na DIN lištu, například SIMATIC S7-1200 G2 CPU 1214FC DC/DC/DC pro běžné řízení a samostatné bezpečnostní relé pro E-Stop. Krytí IP65` *(např. certifikované průmyslové programovatelné relé s montáží na DIN lištu a krytím)*
+     - *Náhrada napájecího zdroje:* `Siemens SITOP PSU6200, 24 V DC, DIN lišta. Zdroj poskytuje průmyslově vhodné napájení pro PLC, snímače a 24V akční členy. Zdroj obsahuje ochranu výstupu proti přepětí, zkratu a přetížení. Pro ochranu před přepěťovými špičkami přicházejícími ze sítě bude na vstupu rozvaděče použita samostatná přepěťová ochrana.` *(např. stabilizovaný průmyslový zdroj 24 V DC na DIN lištu s ochranou proti přepětí)*
+     - *Způsob zapojení bezpečnostního okruhu (Safety):* Jak musí být podle norem zapojeno tlačítko Emergency Stop (E-Stop)? Smí být spoléháno pouze na software mikrokontroléru? Zdůvodněte: `Použijeme např: SIRIUS ACT 3SU1 Emergency Stop. Ne, E-Stop nesmí záviset pouze na běžném programu mikrokontroléru, protože při jeho zamrznutí, chybě programu nebo resetu by software nemusel příkaz ke zastavení zpracovat. Musí být zapojeno do bezpečnostního obvodu`
 
 > **Kritéria hodnocení úlohy 5 (bodování a známka):**
 > - :star: **Odborná úroveň identifikace závad (35 %):** Přesná technická terminologie (např. elektromagnetická indukce, absence odrušovacích varistorů, skelný přechod PLA plastu při 60 °C, studené spoje a vyklepání konektorů vibracemi).
