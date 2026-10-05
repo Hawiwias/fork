@@ -160,7 +160,7 @@ Vyplňte rozhodovací matici. Jako vzor poslouží vyplněný sloupec pro **Vzor
 | **Pořizovací cena HW na 1 kus** *(nízká < 500 Kč / střední 5–30 tis. Kč / vysoká > 50 tis. Kč)*       | **Střední** *(cca 3 500 – 6 000 Kč)*                                                                                                                                                                                      | `Nízká`                           | `Střední`                     | `Vysoká`                                |
 | **Primární programovací jazyk** *(C/C++/MicroPython vs. IEC 61131-3 ST/LAD vs. Python/C#/C++ pod OS)* | **FBD / LAD** *(grafické funkční bloky nebo liniové schéma dle IEC 61131-3)*                                                                                                                                              | `C/C++/MicroPython`                           | `IEC 61131-3 ST/LAD`                     | `Python/C#/C++ pod OS`                                |
 | **Klíčový technický argument pro volbu** *(např. spotřeba, determinismus, grafický výkon)*            | Montáž přímo na DIN lištu v rozváděči, integrovaný displej pro nastavení časovačů přímo na místě, robustní reléové výstupy pro motor a semafor, napájení 24 V DC / 230 V AC bez nutnosti vývoje vlastního plošného spoje. | `Nízká spotřeba`                           | `Determinismus/předvídatelnost`                     | `Vysoký grafický/výpočetní výkon`                                |
-| **Hlavní riziko při volbě špatné platformy** *(proč by neuspěly ostatní dvě varianty)*                | **MCU:** Nutnost vývoje vlastní desky, nízká odolnost vůči venkovnímu rušení a obtížný servis údržbou.<br>**iPC:** Zbytečně extrémní cena (> 30 tis. Kč), dlouhý start po výpadku napájení a vysoká spotřeba.             | `PLC/IPC by byly zbytečně drahé, rozměrné a energeticky náročné`                           | `	MCU může komplikovat  řízení, diagnostiku a servis. iPC může být zbytečně složitý a drahý.`                     | `MCU/PLC nemusí mít dostatečný výkon. Nedostatek rychlosti operací`                                |
+| **Hlavní riziko při volbě špatné platformy** *(proč by neuspěly ostatní dvě varianty)*                | **MCU:** Nutnost vývoje vlastní desky, nízká odolnost vůči venkovnímu rušení a obtížný servis údržbou.<br>**iPC:** Zbytečně extrémní cena (> 30 tis. Kč), dlouhý start po výpadku napájení a vysoká spotřeba.             | `PLC/IPC by byly zbytečně drahé, rozměrné a energeticky náročné. Obojí se nehodí pro sériovou výrobu termostatů.`                           | `	MCU může komplikovat  řízení, diagnostiku a servis (+ není schopen běžet 24/7). MCU -Nejsou dostupné bezpečnostní funkce. iPC může být zbytečně složitý a drahý.`                     | `MCU/PLC nemusí mít dostatečný výkon. Chybí GPU pro zachycování v 4k rozlišení. `                                |
 
 > **Kritéria hodnocení úlohy 3 (bodování a známka):**
 > - :star: **Správnost technického přiřazení platforem (30 %):** Stoprocentně logické a obhajitelné přiřazení všech 3 technologií.
@@ -226,9 +226,9 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
    - Uveďte:
      - Výrobce a přesný model CPU: `Siemens SIPLUS S7-1200 CPU 1214C DC/DC/Relay`
      - Objednací kód (Part Number / Order Code): `6AG1214-1HG40-2XB0`
-     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `SIPLUS KTP700 Basic Color PN (displej)`
-     - Napájecí napětí zvolené jednotky: `SIPLUS PM1207`
-     - Jak je vyřešeno odesílání dat na dispečink: `Data budou z PLC přenášena přes integrované ethernetové rozhraní PROFINET do nadřazeného dispečerského systému. (OPC UA, TCP)`
+     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): ``
+     - Napájecí napětí zvolené jednotky: `24V DC`
+     - Jak je vyřešeno odesílání dat na dispečink: `Data budou z PLC přenášena přes LTE/router modem a VPN do nadřazeného dispečerského systému. (OPC UA, TCP)`
      - Odkaz na technický list (datasheet): [datasheet](https://mall.industry.siemens.com/mall/Catalog/DatasheetDownload?downloadUrl=teddatasheet%2F%3Fformat%3DPDF%26caller%3DMall%26mlfbs%3D6AG1214-1HG40-2XB0%26language%3Den)
      - Odkazy na další použité zdroje: [siemens catalog](https://mall.industry.siemens.com/mall/Catalog/Product/?mlfb=6AG1214-1HG40-2XB0)
 
@@ -241,12 +241,12 @@ mounting position; Tmax > +60 °C number of simultaneously switched-on
 digital inputs 7, digital outputs 5, analog inputs 1 (no adjacent points) with
 horizontal mounting position
 ● At cold restart, min. -25 °C`
-   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Mezilehlá relé oddělují řídicí část PLC 24 V DC od výkonové části 230 V AC a současně chrání výstupy PLC před případnými napěťovými špičkami při spínání cívek stykačů. Řešení také usnadňuje servis a případnou výměnu stykače nebo relé.`
+   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Mezilehlá relé - udržuje životnost kontaktů při vysoké indukční zátěži a současně chrání výstupy PLC před případnými napěťovými špičkami při spínání cívek stykačů. Řešení také usnadňuje servis a případnou výměnu stykače nebo relé.`
 
 4. **Krytí rozváděče:**
    - Jaké minimální krytí **IP skříně** zvolíte? Jak v rozváděči zajistíte provoz v mrazech -20 °C a v letních vedrech?
      - Zvolené krytí rozváděče: `IP65`
-     - Teplotní management skříně: `V zimě topné těleso s termostatem, v létě ventilátor s filtrem. Komponenty musí být vhodné pro teploty −20 až +45 °C.`
+     - Teplotní management skříně: `V zimě topné těleso s termostatem, v létě klimatizace. Komponenty musí být vhodné pro teploty −20 až +45 °C.`
 
 > **Kritéria hodnocení úlohy 4 (bodování a známka):**
 > - :star: **Správnost I/O bilance a dimenzování (30 %):** Správný součet všech signálů, korektní rozlišení reléových vs. tranzistorových výstupů a správné započtení rezervy min. 20 %.
