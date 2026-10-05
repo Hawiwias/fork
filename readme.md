@@ -191,6 +191,10 @@ Co je to tzv. **SoftPLC** a jak umožňuje průmyslovému PC (iPC) kombinovat v�
 
 Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení pro obecní přečerpávací stanici odpadních vod.
 
+**PROUDOVÁ SMYČKA = VSTUP, RELÉ = VÝSTUP (SPÍNÁNÍ)**
+**TRANZISTOROVÝ = DOKÁŽE SPÍNAT VYSOKÉ PROUDY (PWM)**
+
+
 #### Zadání technologického procesu a periferií:
 - **Snímače a vstupy:**
   - 3× plovákový hladinový spínač (havarijní spodní hladina proti chodu nasucho, zapínací hladina, havarijní přepad) – bezpotenciálový kontakt spínající 24 V DC.
