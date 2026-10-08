@@ -292,7 +292,7 @@ Jako vedoucí inženýr jste převzal projekt po nezkušeném brigádníkovi, kt
 | :--- | :--- | :--- | :--- |
 | **Elektromagnetická kompatibilita (EMC)** | `Chybí filtrace napájení a oddělení silových a signálových kabelů.` | Napěťové špičky z indukční zátěže hydraulických ventilů způsobí restart MCU. Při rozepnutí cívky vzniká napěťová cívka. | `Může dojít k nečekanému pohybu pohonu a ohrožení obsluhy.` |
 | **Mechanická a teplotní odolnost** | PLA plast a montáž na těleso lisu | `PLA plast a montáž na těleso bez ověření teplotní odolnosti a mechanického namáhání.` | `PLA při zvýšené teplotě výrazně měkne a pod dlouhodobým zatížením může docházet k tečení materiálu. Uchycení se může uvolnit. Prach z kovárny vniká do obvodu skrz plast. (Chybí IP)` |
-**Spínaní** | hobby relé | `hobby reléový modul (typicky 250 V AC) spíná 400 V ventily` | `hrozí přeskok napětí nebo zkrat` |
+| **Spínaní** | hobby relé | `hobby reléový modul (typicky 250 V AC) spíná 400 V ventily` | `hrozí přeskok napětí nebo zkrat`|
 | **Konektivita a propojení vodičů** | DuPont propojovací kabely bez aretace | `Vibrace, tah a opakované ohýbání mohou způsobit povytažení konektoru nebo přerušení kontaktu.` | `Způsobí náhodné výpadky snímačů nebo akčních členů. Řídicí systém může dostat chybný signál a stroj může reagovat nesprávně.` |
 | **Funkční bezpečnost (Safety)** | Nouzový stop řešený softwarově v čipu | `Při zamrznutí MCU, chybě programu nebo ztrátě napájení nemusí software příkaz k zastavení zpracovat.` | `Nouzové zastavení nemusí nastat. Stroj může ohrozit obsluhu nebo způsobit smrt.` |
 
