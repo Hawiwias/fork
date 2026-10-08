@@ -228,7 +228,7 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
      - Objednací kód (Part Number / Order Code): `6AG1214-1HG40-2XB0`
      - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `SM 1234 (4 AI / 2 AO), SB 1223 (2 DI / 2 DQ, 24 V DC)`
      - Napájecí napětí zvolené jednotky: `24V DC`
-     - Jak je vyřešeno odesílání dat na dispečink: `Data budou z PLC přenášena přes LTE/router modem a VPN do nadřazeného dispečerského systému. (OPC UA, TCP)`
+     - Jak je vyřešeno odesílání dat na dispečink: `Data budou z PLC přenášena přes LTE/router modem a VPN do nadřazeného dispečerského systému. Použije se OPC UA server v CPU systému (vyžaduje nejnovější firmware a licenci), případně Modbus TCP.`
      - Odkaz na technický list (datasheet): [datasheet](https://mall.industry.siemens.com/mall/Catalog/DatasheetDownload?downloadUrl=teddatasheet%2F%3Fformat%3DPDF%26caller%3DMall%26mlfbs%3D6AG1214-1HG40-2XB0%26language%3Den)
      - Odkazy na další použité zdroje: [siemens catalog](https://mall.industry.siemens.com/mall/Catalog/Product/?mlfb=6AG1214-1HG40-2XB0)
 
