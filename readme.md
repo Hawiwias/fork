@@ -144,11 +144,11 @@ Co označuje doplňkové písmeno **K** v kódu krytí **IP69K** a v jakém prů
 Jste v pozici nezávislého konzultanta automatizace. Tři různí zákazníci požadují navrhnout optimální kategorii řízení.
 
 #### Příklad aplikace (vzorové řešení):
-- **Vzorová aplikace 0 – Automatická vjezdová závora na parkoviště:** Jednoduchý jednoúčelový systém s indukční detekční smyčkou vozidla, bezpečnostní optozávorou, koncovými spínači polohy ramene, motorem závory (vpřed/vzad) a výstražným semaforem (červená/zelená). Požadavek na jednoduchou správu správcem objektu a spolehlivý chod v rozváděči u vjezdu.
+- **Vzorová aplikace 0 – Automatická vjezdová závora na parkoviště:** Jednoduchý jednoúčelový systém s indukční detekční smyčkou vozidla, optozávorou, koncovými spínači polohy ramene, motorem závory (vpřed/vzad) a výstražným semaforem (červená/zelená). Požadavek na jednoduchou správu správcem objektu a spolehlivý chod v rozváděči u vjezdu.
 
 #### Popis zadaných aplikací pro studenty:
 1. **Aplikace A – Chytrý pokojový termostat (IoT):** Bateriově napájený přístroj měřící teplotu a vlhkost v místnosti, zobrazující údaje na e-ink displeji a odesílající data přes protokol ZigBee/Wi-Fi do domácí brány. Plánovaná sériová výroba: 10 000 kusů ročně.
-2. **Aplikace B – Automatická balicí linka:** Průmyslová linka ve výrobní hale. Obsahuje 28 optických snímačů, 14 pneumatických válců, 3 dopravníkové pásy s asynchronními motory a bezpečnostní světelnou závoru. Vyžaduje se nepřetržitý provoz 24/7 a snadná údržba podnikovým elektrikářem.
+2. **Aplikace B – Automatická balicí linka:** Průmyslová linka ve výrobní hale. Obsahuje 28 optických snímačů, 14 pneumatických válců, 3 dopravníkové pásy s asynchronními motory a světelnou závoru. Vyžaduje se nepřetržitý provoz 24/7 a snadná údržba podnikovým elektrikářem.
 3. **Aplikace C – Kontrolní stanice optické jakosti svarů:** Pracoviště se 2 vysokorychlostními průmyslovými GigE kamerami snímajícími svary na karoserii automobilu. Snímky v rozlišení 4K jsou analyzovány neuronovou sítí v reálném čase, vady jsou označeny a ukládány do podnikové relační databáze (SQL / MES).
 
 #### Váš úkol:
@@ -301,7 +301,7 @@ Jako vedoucí inženýr jste převzal projekt po nezkušeném brigádníkovi, kt
    - Navrhněte, jakými certifikovanými průmyslovými komponenty tento celek nahradíte při zachování minimálního rozpočtu:
      - *Náhrada řídicí jednotky:* `Certifikované průmyslové programovatelné relé / bezpečnostní PLC pro montáž na DIN lištu, například SIMATIC S7-1200 G2 CPU 1214 DC/DC/DC pro běžné řízení a samostatné bezpečnostní relé pro E-Stop. Krytí IP20` *(např. certifikované průmyslové programovatelné relé s montáží na DIN lištu a krytím)*
      - *Náhrada napájecího zdroje:* `Siemens SITOP PSU6200, 24 V DC na DIN lištu. Zdroj poskytuje průmyslově vhodné napájení pro PLC, snímače a 24V akční členy. Zdroj obsahuje ochranu výstupu proti přepětí, zkratu a přetížení. Pro ochranu před přepěťovými špičkami přicházejícími ze sítě bude na vstupu rozvaděče použita samostatná přepěťová ochrana.` *(např. stabilizovaný průmyslový zdroj 24 V DC na DIN lištu s ochranou proti přepětí)*
-     - *Způsob zapojení bezpečnostního okruhu (Safety):* Jak musí být podle norem zapojeno tlačítko Emergency Stop (E-Stop)? Smí být spoléháno pouze na software mikrokontroléru? Zdůvodněte: `Použijeme např: SIRIUS ACT 3SU1 Emergency Stop tlačítko, bezpečnostní relé a stykač, který je vypnut přes kontakty relé. Ne, E-Stop nesmí záviset pouze na běžném programu mikrokontroléru, protože při jeho zamrznutí, chybě programu nebo resetu by software nemusel příkaz ke zastavení zpracovat. Musí být zapojeno do bezpečnostního obvodu.`
+     - *Způsob zapojení bezpečnostního okruhu (Safety):* Jak musí být podle norem zapojeno tlačítko Emergency Stop (E-Stop)? Smí být spoléháno pouze na software mikrokontroléru? Zdůvodněte: `Použijeme např: SIRIUS ACT 3SU1 Emergency Stop tlačítko, stykač, který je vypnut přes kontakty relé. Ne, E-Stop nesmí záviset pouze na běžném programu mikrokontroléru, protože při jeho zamrznutí, chybě programu nebo resetu by software nemusel příkaz ke zastavení zpracovat. Musí být zapojeno do bezpečnostního obvodu.`
 
 > **Kritéria hodnocení úlohy 5 (bodování a známka):**
 > - :star: **Odborná úroveň identifikace závad (35 %):** Přesná technická terminologie (např. elektromagnetická indukce, absence odrušovacích varistorů, skelný přechod PLA plastu při 60 °C, studené spoje a vyklepání konektorů vibracemi).
