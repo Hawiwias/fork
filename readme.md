@@ -226,7 +226,7 @@ Jste v roli projektanta automatizace. Zákazník poptává zhotovení řízení 
    - Uveďte:
      - Výrobce a přesný model CPU: `Siemens SIPLUS S7-1200 CPU 1214C DC/DC/Relay`
      - Objednací kód (Part Number / Order Code): `6AG1214-1HG40-2XB0`
-     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `SM 1234 (4 AI / 2 AO)`
+     - Rozšiřující moduly (pokud jsou nutné pro AI 4–20 mA nebo AO 0–10 V): `SM 1234 (4 AI / 2 AO), SB 1223`
      - Napájecí napětí zvolené jednotky: `24V DC`
      - Jak je vyřešeno odesílání dat na dispečink: `Data budou z PLC přenášena přes LTE/router modem a VPN do nadřazeného dispečerského systému. (OPC UA, TCP)`
      - Odkaz na technický list (datasheet): [datasheet](https://mall.industry.siemens.com/mall/Catalog/DatasheetDownload?downloadUrl=teddatasheet%2F%3Fformat%3DPDF%26caller%3DMall%26mlfbs%3D6AG1214-1HG40-2XB0%26language%3Den)
@@ -241,7 +241,7 @@ mounting position; Tmax > +60 °C number of simultaneously switched-on
 digital inputs 7, digital outputs 5, analog inputs 1 (no adjacent points) with
 horizontal mounting position
 ● At cold restart, min. -25 °C`
-   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Mezilehlá relé - udržuje životnost kontaktů při vysoké indukční zátěži a současně chrání výstupy PLC před případnými napěťovými špičkami při spínání cívek stykačů. Řešení také usnadňuje servis a případnou výměnu stykače nebo relé.`
+   - Jakým způsobem spínáte cívku stykače 230 V AC (reléový výstup jednotky přímo, nebo přes pomocné mezilehlé relé)? Zdůvodněte: `Mezilehlá relé - prodlužuje životnost kontaktů PLC. Řešení také usnadňuje servis a případnou výměnu stykače nebo relé.`
 
 4. **Krytí rozváděče:**
    - Jaké minimální krytí **IP skříně** zvolíte? Jak v rozváděči zajistíte provoz v mrazech -20 °C a v letních vedrech?
@@ -292,7 +292,8 @@ Jako vedoucí inženýr jste převzal projekt po nezkušeném brigádníkovi, kt
 | :--- | :--- | :--- | :--- |
 | **Elektromagnetická kompatibilita (EMC)** | `Chybí filtrace napájení a oddělení silových a signálových kabelů.` | Napěťové špičky z indukční zátěže hydraulických ventilů způsobí restart MCU. Při rozepnutí cívky vzniká napěťová špička. | `Může dojít k nečekanému pohybu pohonu a ohrožení obsluhy.` |
 | **Mechanická a teplotní odolnost** | PLA plast a montáž na těleso lisu | `PLA plast a montáž na těleso bez ověření teplotní odolnosti a mechanického namáhání.` | `PLA při zvýšené teplotě výrazně měkne a pod dlouhodobým zatížením může docházet k tečení materiálu. Uchycení se může uvolnit. Prach z kovárny vniká do obvodu skrz plast. (Chybí IP)` |
-| **Spínaní** | hobby relé | `hobby reléový modul (typicky 250 V AC) spíná 400 V ventily` | `hrozí přeskok napětí nebo zkrat, 400 V je nad jmenovitým napětím kontaktů - kontakty se přivaří a vznikí oblouk`|
+| **Spínaní** | hobby relé | `hobby reléový modul (typicky 250 V AC) spíná 400 V ventily` | `hrozí přeskok napětí nebo zkrat, 400 V je nad jmenovitým napětím kontaktů - kontakty se přivaří a vzniká oblouk`|
+| **Napájení** | 5V USB nabíječka | `spotřebitelský zdroj bez odolnosti proti rušení a přepětí, prodlužovačka bez jištění` | `Náhodné resety Arduina, ventily mohou nečekaně sepnout nebo zůstat sepnuté.`|
 | **Konektivita a propojení vodičů** | DuPont propojovací kabely bez aretace | `Vibrace, tah a opakované ohýbání mohou způsobit povytažení konektoru nebo přerušení kontaktu.` | `Způsobí náhodné výpadky snímačů nebo akčních členů. Řídicí systém může dostat chybný signál a stroj může reagovat nesprávně.` |
 | **Funkční bezpečnost (Safety)** | Nouzový stop řešený softwarově v čipu | `Při zamrznutí MCU, chybě programu nebo ztrátě napájení nemusí software příkaz k zastavení zpracovat.` | `Nouzové zastavení nemusí nastat. Stroj může ohrozit obsluhu nebo způsobit smrt.` |
 
